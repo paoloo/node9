@@ -66,8 +66,12 @@ typedef struct Proc proc_t;
 /*
  * math module dtoa
  */
-#include <machine/endian.h>
-#define __LITTLE_ENDIAN
+#if defined(__linux__)
+  #include <endian.h>
+#else
+  #include <machine/endian.h>
+  #define __LITTLE_ENDIAN
+#endif
 
 #define	USED(x)		if(x){}else{}
 #define	SET(x)
